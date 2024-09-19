@@ -14,7 +14,7 @@ function SingleProduct() {
 
   const singleProduct = products.filter((product) => product.id === id);
   const fillterFav = favoriteItem.some((item) => item.id === id);
-  console.log(fillterFav);
+
 
   function handlerFavorite(cartItem) {
     if (IsAuth) {

@@ -11,7 +11,7 @@ function CartItem({ cartItem }) {
   function removeItem() {
     revemoCartItem(cartItem);
     cartItem.status && toast.error("Item remove from cart");
-    console.log(cartItem);
+  
   }
 
   return (

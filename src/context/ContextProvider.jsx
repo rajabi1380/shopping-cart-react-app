@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
 
-const BASE_URL = "http://localhost:7000";
+const BASE_URL = "http://localhost/react/api/products/";
 
 const ContextProducts = createContext();
 
@@ -16,10 +16,11 @@ function ContextApp({ children }) {
   useEffect(function () {
     async function fetchData() {
       try {
-        const res = await fetch(`${BASE_URL}/products`);
+        const res = await fetch(`${BASE_URL}`);
 
         const data = await res.json();
-        setProducts(data);
+
+        setProducts(data.data);
       } catch (error) {
         toast.error("there is a problem!try again");
       }
@@ -28,7 +29,7 @@ function ContextApp({ children }) {
   }, []);
 
   function getCartById(prodcut) {
-    // const existingProduct = cartItems.find((item) => item.id === prodcut.id);
+
     if (IsAuth) {
       setProducts(
         products.map((p) =>
@@ -52,22 +53,7 @@ function ContextApp({ children }) {
         theme: "light",
       });
     }
-    // if (existingProduct) {
-    //   console.log(existingProduct);
-    //   setCartItems(
-    //     cartItems.map((item) =>
-    //       item.id === prodcut.id
-    //         ? {
-    //             ...existingProduct,
-    //             quantity: 1,
-    //             status: !existingProduct.status,
-    //           }
-    //         : item
-    //     )
-    //   );
-    // } else {
 
-    // }
   }
   function revemoCartItem(product) {
     const existingProduct = cartItems.find((item) => item.id === product.id);

@@ -15,7 +15,7 @@ function Cart() {
     setTotalAmount(cartItems.reduce((acc, curr) => acc + +curr.price, 0));
   }, [cartItems]);
 
-  console.log(cartItems);
+
   return (
     <>
       <NavBar />

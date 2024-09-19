@@ -6,10 +6,10 @@ import "./FavoriteItems.css";
 
 function FavoriteItems() {
   const { favoriteItem, setFavoriteItem } = useCarts();
-  console.log(favoriteItem);
+
   function removeFavItems(item) {
     const removeFav = favoriteItem.filter((favItem) => favItem.id !== item.id);
-    console.log(removeFav);
+
     setFavoriteItem(removeFav);
   }
   return (
