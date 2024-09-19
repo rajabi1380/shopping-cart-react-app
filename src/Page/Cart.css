@@ -1,0 +1,19 @@
+.goShop {
+  border: 2px solid #0f172a;
+  outline: 0;
+  background-color: #0f172a;
+  color: white;
+  font-size: 23px;
+  font-weight: 800;
+
+  transition: all 0.6s;
+  border-radius: 10px;
+  padding: 10px 25px;
+}
+.goShop:hover {
+  transform: scale(1.2);
+  background-color: white;
+  /* color: #8728c8; */
+  color: #0f172a;
+  border: 2px solid #0f172a;
+}

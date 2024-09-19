@@ -1,0 +1,23 @@
+.titleTotal {
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 500;
+}
+.btnTotal {
+  outline: 0;
+  border: 0;
+  font-weight: 800;
+  font-size: 18px;
+  background-color: #0f172a;
+  border: 2px solid #0f172a;
+  border-radius: 10px;
+  transition: all 0.4s;
+  color: white;
+  padding: 10px 15px;
+}
+.btnTotal:hover {
+  outline: 0;
+  background-color: white;
+  color: #0f172a;
+  border: 2px solid #0f172a;
+}

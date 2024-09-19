@@ -1,0 +1,78 @@
+.waveIcon {
+  color: #ffff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  font-weight: 700;
+  font-size: 60px;
+  transition: all 0.4s;
+  text-decoration: none;
+  font-family: "Poppins";
+  text-transform: uppercase;
+}
+.waveIcon:hover {
+  transform: scale(1.2);
+}
+.about {
+  padding-bottom: 70px;
+
+  background-color: #ffff;
+}
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+.btnLearnMore {
+  border-radius: 10px;
+
+  color: #0f172a;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px 30px;
+  font-weight: 700;
+  transition: all 0.5s;
+
+  border: 2px solid #0f172a;
+}
+.btnLearnMore:hover {
+  border: 0;
+  outline: 0;
+  border: 2px solid #0f172a;
+  background-color: #0f172a;
+  color: #ffff;
+}
+.sectionTitle {
+  padding-bottom: 40px;
+}
+
+.sectionTitle h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  font-family: "Poppins", sans-serif;
+}
+
+.sectionTitle h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: rgb(51, 54, 74);
+  margin: 4px 10px;
+}
+
+.sectionTitle p {
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #2a2c39;
+}
