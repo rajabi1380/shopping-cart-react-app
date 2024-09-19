@@ -1,14 +1,7 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
 
-// import { useNavigate } from "react-router-dom";
 const BASE_URL = "http://localhost:7000";
 
 const ContextProducts = createContext();
@@ -19,7 +12,7 @@ function ContextApp({ children }) {
 
   const [favoriteItem, setFavoriteItem] = useState([]);
   const { IsAuth } = useAuth();
-  // const navigate = useNavigate();
+
   useEffect(function () {
     async function fetchData() {
       try {

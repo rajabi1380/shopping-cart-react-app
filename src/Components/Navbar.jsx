@@ -1,8 +1,8 @@
-import { Heart, ShoppingCart } from "phosphor-react";
+import {  ShoppingCart } from "phosphor-react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useCarts } from "../context/ContextProvider";
 import "./Navbar.css";
@@ -19,7 +19,7 @@ function NavBar() {
       toast.error("please complete your shop");
     }
 
-    // navigate("/");
+   
   }
   return (
     <Navbar expand="lg" className="mb-3">
@@ -57,7 +57,7 @@ function NavBar() {
             <span className=" numberOfFavoriteItems ">
               {favoriteItem.length}
             </span>
-            // <span className="numberOfFavoriteItems">{favoriteItem.length}</span>
+            
           )}
         </Link>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />

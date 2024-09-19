@@ -35,17 +35,14 @@ function HomePage() {
         />
       </section>
 
-      <section class="about">
+      <section className="about">
         <Container>
-          <div
-            className="sectionTitle aos-init aos-animate"
-            data-aos="zoom-out"
-          >
+          <div>
             <h2>About</h2>
             <p>Who we are</p>
           </div>
 
-          <Row className="row content aos-init" data-aos="fade-up">
+          <Row>
             <Col lg="6">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

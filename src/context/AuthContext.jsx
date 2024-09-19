@@ -14,6 +14,7 @@ function reducer(state, action) {
 const IsAuthContext = createContext();
 function AuthContext({ children }) {
   const [{ IsAuth }, dispatch] = useReducer(reducer, initialState);
+
   const FAKE_USER = {
     name: "Jack",
     email: "jack@example.com",

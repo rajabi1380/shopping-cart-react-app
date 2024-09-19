@@ -1,4 +1,4 @@
-import { Button, Col, Container, Navbar, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useCarts } from "../context/ContextProvider";
 import CartItem from "../Components/CartItem";
 import Total from "../Components/Total";

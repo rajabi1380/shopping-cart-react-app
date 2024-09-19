@@ -1,11 +1,9 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./CartItem.css";
 import { Trash } from "phosphor-react";
 import { useCarts } from "../context/ContextProvider";
 import { toast } from "react-toastify";
-import { useAuth } from "../context/AuthContext";
+
 function CartItem({ cartItem }) {
   const { revemoCartItem } = useCarts();
   const { id, img, productName, price } = cartItem;
@@ -89,28 +87,6 @@ function CartItem({ cartItem }) {
       </Row>
     </div>
   );
-
-  // <Card style={{ width: "18rem", margin: "10px " }}>
-  //   <Card.Img variant="top" src={img} alt={id} />
-  //   <Card.Body>
-  //     <Card.Title>{productName}</Card.Title>
-
-  //     <Container
-  //       style={{
-  //         display: "flex",
-  //         justifyContent: "space-between",
-  //         alignItems: "baseline",
-  //       }}
-  //     >
-  //       {" "}
-  //       <Card.Text style={{ fontSize: "18px" }}>${price}</Card.Text>
-  //       <span className="cartItemtrash">
-  //         {" "}
-  //         <Trash onClick={() => removeItem(cartItem)} />
-  //       </span>
-  //     </Container>
-  //   </Card.Body>
-  // </Card>
 }
 
 export default CartItem;

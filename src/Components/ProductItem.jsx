@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import { useCarts } from "../context/ContextProvider";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 
@@ -11,7 +11,7 @@ function ProductItem({ product }) {
   const { IsAuth } = useAuth();
 
   const { productName, price, img, id, status, description, soldOut } = product;
-  console.log(product);
+
   const navigate = useNavigate();
 
   function addTocart() {

@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useCarts } from "../context/ContextProvider";
 import NavBar from "../Components/Navbar";
 import { Trash } from "phosphor-react";
