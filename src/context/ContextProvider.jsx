@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
 
-const BASE_URL = "https://json-server-beta-three.vercel.app/products";
+const BASE_URL = "https://json-server-beta-three.vercel.app";
 
 const ContextProducts = createContext();
 
@@ -16,7 +16,7 @@ function ContextApp({ children }) {
   useEffect(function () {
     async function fetchData() {
       try {
-        const res = await fetch(`${BASE_URL}`);
+        const res = await fetch(`${BASE_URL}/products`);
 
         const data = await res.json();
 
