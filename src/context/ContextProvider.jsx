@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
 
-const BASE_URL = "http://localhost:7000";
+const BASE_URL = "https://json-server-beta-three.vercel.app/products";
 
 const ContextProducts = createContext();
 
@@ -16,11 +16,11 @@ function ContextApp({ children }) {
   useEffect(function () {
     async function fetchData() {
       try {
-        const res = await fetch(`${BASE_URL}/data`);
+        const res = await fetch(`${BASE_URL}`);
 
         const data = await res.json();
 
-        setProducts(data.data);
+        setProducts(data);
       } catch (error) {
         toast.error("there is a problem!try again");
       }
