@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
 
-const BASE_URL = "http://localhost/react/api/products/";
+const BASE_URL = "http://localhost:7000";
 
 const ContextProducts = createContext();
 
@@ -16,7 +16,7 @@ function ContextApp({ children }) {
   useEffect(function () {
     async function fetchData() {
       try {
-        const res = await fetch(`${BASE_URL}`);
+        const res = await fetch(`${BASE_URL}/data`);
 
         const data = await res.json();
 
@@ -29,7 +29,6 @@ function ContextApp({ children }) {
   }, []);
 
   function getCartById(prodcut) {
-
     if (IsAuth) {
       setProducts(
         products.map((p) =>
@@ -53,7 +52,6 @@ function ContextApp({ children }) {
         theme: "light",
       });
     }
-
   }
   function revemoCartItem(product) {
     const existingProduct = cartItems.find((item) => item.id === product.id);
