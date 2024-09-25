@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
 
-const BASE_URL = "https://json-server-beta-three.vercel.app";
+const BASE_URL = "https://json-server-two-gamma.vercel.app";
 
 const ContextProducts = createContext();
 
