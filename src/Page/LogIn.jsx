@@ -22,7 +22,7 @@ function LogIn() {
   return (
     <>
       {" "}
-      <button onClick={() => navigate("/")} className="backBtn">
+      <button onClick={() => navigate("/shop")} className="backBtn">
         {" "}
         &larr; Back
       </button>

@@ -40,7 +40,6 @@ function ContextApp({ children }) {
         { ...prodcut, quantity: 1, status: !prodcut.status },
       ]);
     } else {
-      // navigate("/login"),
       toast("👀 please login in the website", {
         position: "bottom-left",
         autoClose: 5000,

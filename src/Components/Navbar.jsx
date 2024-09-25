@@ -1,4 +1,4 @@
-import {  ShoppingCart } from "phosphor-react";
+import { Phone, ShoppingCart, House, Swatches } from "phosphor-react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -18,8 +18,6 @@ function NavBar() {
     else {
       toast.error("please complete your shop");
     }
-
-   
   }
   return (
     <Navbar expand="lg" className="mb-3">
@@ -57,10 +55,12 @@ function NavBar() {
             <span className=" numberOfFavoriteItems ">
               {favoriteItem.length}
             </span>
-            
           )}
-        </Link>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
+        </Link>{" "}
+        <Navbar.Toggle
+          style={{ marginRight: "-50px" }}
+          aria-controls={`offcanvasNavbar-expand-lg`}
+        />
         <Navbar.Offcanvas
           id={`offcanvasNavbar-expand-lg`}
           aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
@@ -123,24 +123,28 @@ function NavBar() {
                 </Link>
               )}
               <Link
-                className="iconShop"
                 style={{
                   textDecoration: "none",
-
                   color: "#0f172a",
+                  margin: "0 15px",
+                  fontSize: "20px",
+                  fontWeight: "500",
                 }}
-                to="/cart"
+                to="/shop"
               >
-                <ShoppingCart size={30} />
-
-                {cartItems.length > 0 && (
-                  <span className="numberOfCart">{cartItems.length}</span>
-                )}
-              </Link>
+                connect us
+              </Link>{" "}
             </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
-      </Container>
+          </Offcanvas.Body>{" "}
+        </Navbar.Offcanvas>{" "}
+        <Link className="iconShop" to="/cart">
+          <ShoppingCart size={30} />
+
+          {cartItems.length > 0 && (
+            <span className="numberOfCart">{cartItems.length}</span>
+          )}
+        </Link>
+      </Container>{" "}
     </Navbar>
   );
 }
