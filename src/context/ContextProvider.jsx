@@ -8,6 +8,7 @@ const ContextProducts = createContext();
 
 function ContextApp({ children }) {
   const [products, setProducts] = useState([]);
+
   const [cartItems, setCartItems] = useState([]);
 
   const [favoriteItem, setFavoriteItem] = useState([]);
@@ -28,7 +29,9 @@ function ContextApp({ children }) {
     fetchData();
   }, []);
 
-  function getCartById(prodcut) {
+  async function getCartById(prodcut) {
+    // const exist = products.find((pro) => pro.id === prodcut.id);
+
     if (IsAuth) {
       setProducts(
         products.map((p) =>
@@ -39,6 +42,20 @@ function ContextApp({ children }) {
         ...cartItems,
         { ...prodcut, quantity: 1, status: !prodcut.status },
       ]);
+      // const res = await fetch(`${BASE_URL}/products/${prodcut.id}`, {
+      //   method: "PUT",
+      //   body: JSON.stringify({
+      //     ...exist,
+      //     status: exist.status,
+      //     soldOut: exist.soldOut,
+      //   }),
+      //   headers: {
+      //     "Content-type": "application/json; charset=UTF-8",
+      //   },
+      // });
+      // const data = await res.json();
+
+      // setProducts(data);
     } else {
       toast("👀 please login in the website", {
         position: "bottom-left",
@@ -72,6 +89,7 @@ function ContextApp({ children }) {
           : { ...product, status: product.status, soldOut: product.soldOut }
       )
     );
+
     toast("😎 Thank for your shop!", {
       position: "bottom-left",
       autoClose: 5000,

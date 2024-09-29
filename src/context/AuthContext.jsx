@@ -1,5 +1,7 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+
 const initialState = { IsAuth: false };
+
 function reducer(state, action) {
   switch (action.type) {
     case "login":
@@ -11,6 +13,7 @@ function reducer(state, action) {
       break;
   }
 }
+
 const IsAuthContext = createContext();
 function AuthContext({ children }) {
   const [{ IsAuth }, dispatch] = useReducer(reducer, initialState);

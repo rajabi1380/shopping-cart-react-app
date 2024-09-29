@@ -11,7 +11,6 @@ function CartItem({ cartItem }) {
   function removeItem() {
     revemoCartItem(cartItem);
     cartItem.status && toast.error("Item remove from cart");
-  
   }
 
   return (
@@ -28,7 +27,7 @@ function CartItem({ cartItem }) {
       <Row
         style={{
           width: "800px",
-          height: "250px",
+          padding: "25px 15px",
 
           borderRadius: "15px",
 
@@ -45,7 +44,7 @@ function CartItem({ cartItem }) {
           }}
         >
           <>
-            <Col className="pe-3 " style={{ marginRight: "55px" }} md="4">
+            <Col className="pe-3 " style={{ margin: "15px 10px" }} md="4">
               <p
                 style={{
                   fontWeight: "700",

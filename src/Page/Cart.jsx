@@ -15,7 +15,6 @@ function Cart() {
     setTotalAmount(cartItems.reduce((acc, curr) => acc + +curr.price, 0));
   }, [cartItems]);
 
-
   return (
     <>
       <NavBar />
@@ -26,10 +25,7 @@ function Cart() {
             <Row>
               <Col md="7">
                 {cartItems.map((cartItem) => (
-                  <>
-                    {" "}
-                    <CartItem cartItem={cartItem} key={cartItem.id} />
-                  </>
+                  <CartItem cartItem={cartItem} key={cartItem.id} />
                 ))}
               </Col>{" "}
               <Col

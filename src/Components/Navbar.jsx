@@ -25,6 +25,7 @@ function NavBar() {
         style={{
           marginTop: "20px",
           display: "flex",
+          position: "relative",
           alignItems: "center",
           padding: "0 25px",
           fontFamily: "Leckerli",
@@ -42,21 +43,23 @@ function NavBar() {
         >
           Rajabi Shop
         </Link>{" "}
-        <Link to="/favoriteitems" className="iconHeart">
-          <span>
-            {" "}
-            <i
-              style={{ color: "rgb(51, 54, 74)" }}
-              className="bi bi-suit-heart"
-            ></i>
-          </span>
-
-          {favoriteItem.length > 0 && (
-            <span className=" numberOfFavoriteItems ">
-              {favoriteItem.length}
+        {IsAuth && (
+          <Link to="/favoriteitems" className="iconHeart">
+            <span>
+              {" "}
+              <i
+                style={{ color: "rgb(51, 54, 74)" }}
+                className="bi bi-suit-heart"
+              ></i>
             </span>
-          )}
-        </Link>{" "}
+
+            {favoriteItem.length > 0 && (
+              <span className=" numberOfFavoriteItems ">
+                {favoriteItem.length}
+              </span>
+            )}
+          </Link>
+        )}
         <Navbar.Toggle
           style={{ marginRight: "-50px" }}
           aria-controls={`offcanvasNavbar-expand-lg`}

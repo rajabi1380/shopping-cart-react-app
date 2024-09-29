@@ -1,6 +1,6 @@
 .cartItemtrash {
   font-size: 25px;
-  /* color: #8728c8; */
+
   color: #0f172a;
   border-radius: 50%;
   height: 50px;
@@ -8,7 +8,6 @@
   background-color: #f0e4f8;
   transition: all 0.4s;
   text-align: center;
-  /* line-height: 1.5; */
 }
 .cartItemtrash:hover {
   transform: scale(1.2);

@@ -5,7 +5,7 @@
   height: 25px;
   border-radius: 50%;
   background-color: #0f172a;
-  top: 25px;
+  top: -5px;
   right: 16px;
   font-size: 18px;
   text-align: center;
@@ -15,8 +15,8 @@
 .numberOfFavoriteItems {
   position: absolute;
   content: "";
-  top: 30px;
-  left: 268px;
+  top: 5px;
+  /* left: 268px; */
   font-size: 18px;
   color: #fff;
   background-color: #0f172a;
@@ -51,9 +51,15 @@
 
 @media screen and (max-width: 992px) {
   .iconHeart {
-    display: none;
+    position: absolute;
+    left: 185px;
   }
   .numberOfFavoriteItems {
-    display: none;
+    position: absolute;
+    top: -5px;
+  }
+  .numberOfCart {
+    position: absolute;
+    top: -5px;
   }
 }
