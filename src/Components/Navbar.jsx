@@ -8,10 +8,17 @@ import { useCarts } from "../context/ContextProvider";
 import "./Navbar.css";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import { NavLink } from "react-bootstrap";
 
 function NavBar() {
   const { cartItems, favoriteItem } = useCarts();
   const { IsAuth, logout } = useAuth();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function handleClick() {
     if (!cartItems.length) logout();
@@ -59,87 +66,160 @@ function NavBar() {
               </span>
             )}
           </Link>
-        )}
-        <Navbar.Toggle
-          style={{ marginRight: "-50px" }}
-          aria-controls={`offcanvasNavbar-expand-lg`}
-        />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-lg`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
-          placement="end"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-              <Link
+        )}{" "}
+        <>
+          <Navbar.Toggle
+            className="btnNav"
+            onClick={handleShow}
+          ></Navbar.Toggle>
+
+          <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: " rgb(51, 54, 74)",
+                    fontSize: "25px",
+                    fontWeight: "600",
+                    fontFamily: "Leckerli",
+                  }}
+                  to="/shop"
+                >
+                  Rajabi app
+                </Link>
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav
+                style={{ fontFamily: "Leckerli" }}
+                className=" justify-content-end flex-column flex-grow-1 pe-4"
+              >
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "#0f172a",
+
+                    fontSize: "20px",
+                    fontWeight: "500",
+                    padding: "10px 15px",
+                  }}
+                  to="/shop"
+                >
+                  <i class="bi bi-cart3 IconNav"></i> Home
+                </Link>{" "}
+                {IsAuth ? (
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: "#0f172a",
+
+                      fontSize: "20px",
+                      fontWeight: "500",
+                      padding: "10px 15px",
+                    }}
+                    onClick={handleClick}
+                  >
+                    <i class="bi bi-arrow-left-circle IconNav"></i> Logout
+                  </Link>
+                ) : (
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      color: "#0f172a",
+
+                      fontSize: "20px",
+                      padding: "10px 15px",
+                      fontWeight: "500",
+                    }}
+                    to="/login"
+                  >
+                    <i class="bi bi-arrow-right-circle IconNav"></i> Login
+                  </Link>
+                )}
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "#0f172a",
+                    padding: "10px 15px",
+                    fontSize: "20px",
+                    fontWeight: "500",
+                  }}
+                  to="/connection"
+                >
+                  <i class="bi bi-person-lines-fill IconNav"></i> connect us
+                </Link>{" "}
+              </Nav>
+              <hr />
+              <Container
                 style={{
-                  textDecoration: "none",
-                  color: " rgb(51, 54, 74)",
+                  display: "flex ",
+                  justifyContent: "space-around",
                   fontSize: "25px",
-                  fontWeight: "600",
+                  margin: "10px 0",
                 }}
-                to="/shop"
               >
-                React App
-              </Link>
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-4">
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#0f172a",
-                  margin: "0 15px",
-                  fontSize: "20px",
-                  fontWeight: "500",
-                }}
-                to="/shop"
-              >
-                Home
-              </Link>{" "}
-              {IsAuth ? (
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "#0f172a",
-                    margin: "0 15px",
-                    fontSize: "20px",
-                    fontWeight: "500",
-                  }}
-                  onClick={handleClick}
-                >
-                  Logout
-                </Link>
-              ) : (
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "#0f172a",
-                    margin: "0 15px",
-                    fontSize: "20px",
-                    fontWeight: "500",
-                  }}
-                  to="/login"
-                >
-                  Login
-                </Link>
-              )}
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#0f172a",
-                  margin: "0 15px",
-                  fontSize: "20px",
-                  fontWeight: "500",
-                }}
-                to="/shop"
-              >
-                connect us
-              </Link>{" "}
-            </Nav>
-          </Offcanvas.Body>{" "}
-        </Navbar.Offcanvas>{" "}
+                <NavLink>
+                  <i class="bi bi-instagram"></i>
+                </NavLink>
+                <NavLink>
+                  <i class="bi bi-linkedin"></i>
+                </NavLink>
+                <NavLink>
+                  <i class="bi bi-telegram"></i>
+                </NavLink>
+                <NavLink>
+                  <i class="bi bi-facebook"></i>
+                </NavLink>
+              </Container>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </>
+        <div className="navTitle">
+          {" "}
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "#0f172a",
+
+              fontSize: "20px",
+              fontWeight: "500",
+              padding: "10px 15px",
+            }}
+            to="/shop"
+          >
+            Home
+          </Link>{" "}
+          {IsAuth ? (
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "#0f172a",
+
+                fontSize: "20px",
+                fontWeight: "500",
+                padding: "10px 15px",
+              }}
+              onClick={handleClick}
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "#0f172a",
+
+                fontSize: "20px",
+                padding: "10px 15px",
+                fontWeight: "500",
+              }}
+              to="/login"
+            >
+              Login
+            </Link>
+          )}{" "}
+        </div>{" "}
         <Link className="iconShop" to="/cart">
           <ShoppingCart size={30} />
 

@@ -9,8 +9,13 @@ const ContextProducts = createContext();
 function ContextApp({ children }) {
   const [products, setProducts] = useState([]);
 
-  const [cartItems, setCartItems] = useState([]);
-
+  const [cartItems, setCartItems] = useState(() => {
+    const storedValue = localStorage.getItem("cartItems");
+    return storedValue ? JSON.parse(storedValue) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
   const [favoriteItem, setFavoriteItem] = useState([]);
   const { IsAuth } = useAuth();
 
@@ -30,7 +35,7 @@ function ContextApp({ children }) {
   }, []);
 
   async function getCartById(prodcut) {
-    // const exist = products.find((pro) => pro.id === prodcut.id);
+    const exist = products.find((pro) => pro.id === prodcut.id);
 
     if (IsAuth) {
       setProducts(
@@ -42,20 +47,20 @@ function ContextApp({ children }) {
         ...cartItems,
         { ...prodcut, quantity: 1, status: !prodcut.status },
       ]);
-      // const res = await fetch(`${BASE_URL}/products/${prodcut.id}`, {
-      //   method: "PUT",
-      //   body: JSON.stringify({
-      //     ...exist,
-      //     status: exist.status,
-      //     soldOut: exist.soldOut,
-      //   }),
-      //   headers: {
-      //     "Content-type": "application/json; charset=UTF-8",
-      //   },
-      // });
-      // const data = await res.json();
+      const res = await fetch(`${BASE_URL}/products/${prodcut.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          ...exist,
+          status: !exist.status,
+          soldOut: exist.soldOut,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const data = await res.json();
 
-      // setProducts(data);
+      setProducts(data);
     } else {
       toast("👀 please login in the website", {
         position: "bottom-left",

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Shop from "./Page/Shop";
 import Cart from "./Page/Cart";
-
+import Connect from "./Page/Connect";
 import { ContextApp } from "./context/ContextProvider";
 import SingleProduct from "./Page/SingleProduct";
 import FavoriteItems from "./Page/FavoriteItems";
@@ -23,6 +23,7 @@ function App() {
             <Route path="singleproduct/:id" element={<SingleProduct />} />
             <Route path="favoriteitems" element={<FavoriteItems />} />
             <Route path="login" element={<LogIn />} />
+            <Route path="connection" element={<Connect />} />
           </Routes>
         </BrowserRouter>
       </ContextApp>

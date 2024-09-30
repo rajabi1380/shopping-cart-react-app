@@ -12,11 +12,14 @@
   color: #fff;
   font-weight: 500;
 }
+.btnNav {
+  display: none;
+}
 .numberOfFavoriteItems {
   position: absolute;
   content: "";
-  top: 5px;
-  /* left: 268px; */
+  top: -5px;
+
   font-size: 18px;
   color: #fff;
   background-color: #0f172a;
@@ -29,9 +32,11 @@
 }
 
 .iconHeart {
+  position: absolute;
   font-size: 20px;
   font-weight: 800;
-  margin-left: 50px;
+  left: 300px;
+
   margin-top: 7px;
   background: #fff;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
@@ -48,11 +53,18 @@
 
   color: #0f172a;
 }
-
+.navTitle {
+  position: absolute;
+  right: 80px;
+}
+.IconNav {
+  font-size: 25px;
+  padding-right: 10px;
+}
 @media screen and (max-width: 992px) {
   .iconHeart {
     position: absolute;
-    left: 185px;
+    left: 250px;
   }
   .numberOfFavoriteItems {
     position: absolute;
@@ -61,5 +73,13 @@
   .numberOfCart {
     position: absolute;
     top: -5px;
+  }
+  .btnNav {
+    display: block;
+    position: absolute;
+    right: 80px;
+  }
+  .navTitle {
+    display: none;
   }
 }
