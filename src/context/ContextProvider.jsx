@@ -35,8 +35,6 @@ function ContextApp({ children }) {
   }, []);
 
   async function getCartById(prodcut) {
-    const exist = products.find((pro) => pro.id === prodcut.id);
-    console.log(exist);
     if (IsAuth) {
       setCartItems([...cartItems, prodcut]);
     } else {
@@ -76,14 +74,10 @@ function ContextApp({ children }) {
   }
   function revemoCartItem(product) {
     const existingProduct = cartItems.find((item) => item.id === product.id);
-    // setProducts(
-    //   products.map((p) =>
-    //     p.id === product.id ? { ...product, status: !product.status } : p
-    //   )
-    // );
-    // if (existingProduct.quantity === 1) {
-    //   setCartItems(cartItems.filter((item) => item.id !== product.id));
-    // }
+
+    if (existingProduct.quantity === 1) {
+      setCartItems(cartItems.filter((item) => item.id !== product.id));
+    }
   }
 
   function getFavoriteItem(cartItem) {

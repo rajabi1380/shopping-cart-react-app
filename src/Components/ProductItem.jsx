@@ -5,15 +5,13 @@ import { useCarts } from "../context/ContextProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
-import { useEffect } from "react";
 
 function ProductItem({ product }) {
   const { getCartById, revemoCartItem, cartItems } = useCarts();
   const { IsAuth } = useAuth();
-
+  const navigate = useNavigate();
   const { productName, price, img, id, description } = product;
-  const checkStatus = cartItems.map((cart) => cart.id === id);
-  console.log(checkStatus);
+  const checkStatus = cartItems.some((cart) => cart.id === id);
 
   function addTocart() {
     getCartById(product);
@@ -26,7 +24,12 @@ function ProductItem({ product }) {
   }
   return (
     <Card style={{ width: "18rem", margin: "10px" }}>
-      <Card.Img variant="top" src={img} alt={id} />
+      <Card.Img
+        variant="top"
+        src={img}
+        alt={id}
+        onClick={() => IsAuth && navigate(`/singleproduct/${id}`)}
+      />
       <Card.Body>
         <Card.Title>{productName}</Card.Title>
         <Card.Text>{description}</Card.Text>
@@ -39,7 +42,7 @@ function ProductItem({ product }) {
         >
           {" "}
           <Card.Text style={{ fontSize: "18px" }}>${price}</Card.Text>{" "}
-          {!checkStatus ? (
+          {checkStatus ? (
             <Button variant={"danger"} onClick={() => removeCart(product)}>
               RemoveCart
             </Button>

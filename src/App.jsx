@@ -8,8 +8,7 @@ import FavoriteItems from "./Page/FavoriteItems";
 import HomePage from "./Page/HomePage";
 import LogIn from "./Page/LogIn";
 import { AuthContext } from "./context/AuthContext";
-import { useAuth } from "./context/AuthContext";
-import { useEffect } from "react";
+
 function App() {
   return (
     <AuthContext>
