@@ -5,10 +5,12 @@ const initialState = { IsAuth: false };
 function reducer(state, action) {
   switch (action.type) {
     case "login":
+      localStorage.setItem("token", "User1234");
       return { ...state, IsAuth: true };
     case "logout":
       return { ...state, IsAuth: false };
-
+    case "loggedIn":
+      return { ...state, IsAuth: true };
     default:
       break;
   }
@@ -31,6 +33,13 @@ function AuthContext({ children }) {
   function logout() {
     dispatch({ type: "logout" });
   }
+  function loggedIn() {
+    dispatch({ type: "loggedIn" });
+  }
+  useEffect(() => {
+    const chechLogged = localStorage.getItem("token");
+    if (chechLogged) return loggedIn();
+  }, []);
   return (
     <IsAuthContext.Provider value={{ login, IsAuth, logout }}>
       {children}

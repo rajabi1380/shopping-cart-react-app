@@ -36,31 +36,9 @@ function ContextApp({ children }) {
 
   async function getCartById(prodcut) {
     const exist = products.find((pro) => pro.id === prodcut.id);
-
+    console.log(exist);
     if (IsAuth) {
-      setProducts(
-        products.map((p) =>
-          p.id === prodcut.id ? { ...prodcut, status: !prodcut.status } : p
-        )
-      );
-      setCartItems([
-        ...cartItems,
-        { ...prodcut, quantity: 1, status: !prodcut.status },
-      ]);
-      const res = await fetch(`${BASE_URL}/products/${prodcut.id}`, {
-        method: "PUT",
-        body: JSON.stringify({
-          ...exist,
-          status: !exist.status,
-          soldOut: exist.soldOut,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-      const data = await res.json();
-
-      setProducts(data);
+      setCartItems([...cartItems, prodcut]);
     } else {
       toast("👀 please login in the website", {
         position: "bottom-left",
@@ -73,38 +51,39 @@ function ContextApp({ children }) {
         theme: "light",
       });
     }
+    // if (IsAuth) {
+    //   setProducts(
+    //     products.map((p) =>
+    //       p.id === prodcut.id ? { ...prodcut, status: !prodcut.status } : p
+    //     )
+    //   );
+    //   setCartItems([
+    //     ...cartItems,
+    //     { ...prodcut, quantity: 1, status: !prodcut.status },
+    //   ]);
+    // } else {
+    //   toast("👀 please login in the website", {
+    //     position: "bottom-left",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    // }
   }
   function revemoCartItem(product) {
     const existingProduct = cartItems.find((item) => item.id === product.id);
-    setProducts(
-      products.map((p) =>
-        p.id === product.id ? { ...product, status: !product.status } : p
-      )
-    );
-    if (existingProduct.quantity === 1) {
-      setCartItems(cartItems.filter((item) => item.id !== product.id));
-    }
-  }
-  function checkSoldOut() {
-    setCartItems([]);
-    setProducts(
-      products.map((product) =>
-        product.status
-          ? { ...product, status: !product.status, soldOut: !product.soldOut }
-          : { ...product, status: product.status, soldOut: product.soldOut }
-      )
-    );
-
-    toast("😎 Thank for your shop!", {
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    // setProducts(
+    //   products.map((p) =>
+    //     p.id === product.id ? { ...product, status: !product.status } : p
+    //   )
+    // );
+    // if (existingProduct.quantity === 1) {
+    //   setCartItems(cartItems.filter((item) => item.id !== product.id));
+    // }
   }
 
   function getFavoriteItem(cartItem) {
@@ -128,7 +107,7 @@ function ContextApp({ children }) {
         revemoCartItem,
         setFavoriteItem,
         setCartItems,
-        checkSoldOut,
+
         getFavoriteItem,
         favoriteItem,
       }}

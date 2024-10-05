@@ -5,14 +5,15 @@ import { useCarts } from "../context/ContextProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
+import { useEffect } from "react";
 
 function ProductItem({ product }) {
-  const { getCartById, revemoCartItem } = useCarts();
+  const { getCartById, revemoCartItem, cartItems } = useCarts();
   const { IsAuth } = useAuth();
 
-  const { productName, price, img, id, status, description, soldOut } = product;
-
-  const navigate = useNavigate();
+  const { productName, price, img, id, description } = product;
+  const checkStatus = cartItems.map((cart) => cart.id === id);
+  console.log(checkStatus);
 
   function addTocart() {
     getCartById(product);
@@ -24,19 +25,8 @@ function ProductItem({ product }) {
     product.status && toast.error("Item remove from cart");
   }
   return (
-    <Card
-      style={
-        soldOut
-          ? { opacity: "0.8", width: "18rem", margin: "10px " }
-          : { width: "18rem", margin: "10px" }
-      }
-    >
-      <Card.Img
-        variant="top"
-        src={img}
-        alt={id}
-        onClick={() => !soldOut && navigate(`/singleproduct/${id}`)}
-      />
+    <Card style={{ width: "18rem", margin: "10px" }}>
+      <Card.Img variant="top" src={img} alt={id} />
       <Card.Body>
         <Card.Title>{productName}</Card.Title>
         <Card.Text>{description}</Card.Text>
@@ -49,17 +39,16 @@ function ProductItem({ product }) {
         >
           {" "}
           <Card.Text style={{ fontSize: "18px" }}>${price}</Card.Text>{" "}
-          {status ? (
+          {!checkStatus ? (
             <Button variant={"danger"} onClick={() => removeCart(product)}>
               RemoveCart
             </Button>
           ) : (
             <Button
-              disabled={soldOut}
               style={{ backgroundColor: "#0f172a", border: "0", outline: "0" }}
               onClick={() => addTocart(product)}
             >
-              {soldOut ? "soldOut" : "AddToCart"}
+              AddToCart
             </Button>
           )}
         </Container>

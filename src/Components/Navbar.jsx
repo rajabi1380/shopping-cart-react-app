@@ -9,7 +9,7 @@ import "./Navbar.css";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
+
 import { NavLink } from "react-bootstrap";
 
 function NavBar() {
@@ -21,8 +21,10 @@ function NavBar() {
   const handleShow = () => setShow(true);
 
   function handleClick() {
-    if (!cartItems.length) logout();
-    else {
+    if (!cartItems.length) {
+      localStorage.setItem("token", "");
+      logout();
+    } else {
       toast.error("please complete your shop");
     }
   }
