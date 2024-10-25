@@ -2,7 +2,10 @@ import { useCarts } from "../context/ContextProvider";
 import "./Total.css";
 
 function Total({ totalAmount }) {
-  const { cartItems } = useCarts();
+  const { cartItems, setCartItems } = useCarts();
+  function removeAllItems() {
+    setCartItems([]);
+  }
 
   return (
     <div style={{ paddingBottom: "25px" }}>
@@ -15,7 +18,9 @@ function Total({ totalAmount }) {
         <span>Total Amount</span> : ${totalAmount}
       </p>
 
-      <button className="btnTotal">Checkout Now</button>
+      <button className="btnTotal" onClick={removeAllItems}>
+        Checkout Now
+      </button>
     </div>
   );
 }

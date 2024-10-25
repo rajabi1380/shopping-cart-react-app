@@ -2,10 +2,10 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("public/fonts/Poppins-Regular.ttf");
+  src: url("/public/fonts/Poppins-Regular.ttf");
 }
 
 @font-face {
   font-family: "Leckerli";
-  src: url("public/fonts/Poppins-Regular.ttf");
+  src: url("/public/fonts/LeckerliOne-Regular.ttf");
 }
