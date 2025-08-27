@@ -6,7 +6,7 @@ The app allows users to add products to the cart, update quantities, and remove 
 ---
 
 ## 🌍 Live Demo
-👉 [View on Vercel](https://your-vercel-app-url.vercel.app)
+👉 [View on Vercel](https://shopping-cart-react-app-gamma.vercel.app/)
 
 ---
 
@@ -29,7 +29,7 @@ Make sure you have the following installed on your machine:
 ## 🚀 Installation & Setup
 ```bash
 # Clone the repository
-git clone https://github.com/username/shopping-cart-react-app.git
+git clone https://github.com/rajabi1380/shopping-cart-react-app.git
 
 # Navigate into the project folder
 cd shopping-cart-react-app
