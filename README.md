@@ -6,7 +6,7 @@ The app allows users to add products to the cart, update quantities, and remove 
 ---
 
 ## 🌍 Live Demo
-👉 [View on Vercel](https://shopping-cart-react-app-gamma.vercel.app/)
+😍👉 [View on Vercel](https://shopping-cart-react-app-gamma.vercel.app/)
 
 ---
 
